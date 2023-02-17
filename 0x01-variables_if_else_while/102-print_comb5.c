@@ -1,43 +1,23 @@
 #include <stdio.h>
 
 /**
- *main - print a num pair from 00-99 but no repeats (00 01, 00 02, 00 03,...)
- *Return: Always 0 (Success)
+ * main - print all combinations of single digits 
+ * Return: Always 0
  */
-
 int main(void)
 {
-	int tens;
-	int ones;
-	int t;
-	int o;
+	int n;
 
-	for (tens = '0'; tens <= '9'; tens++) /*print first two digit combo*/
+	for (n = 48; n < 58; n++)
 	{
-		for (ones = '0'; ones <= '9'; ones++)
+		putchar(n);
+		if (n !=57)
 		{
-		 	for (t = tens; t <= '9'; t++) /*print second of pair*/
-			{
-				for (o = ones + 1; o <= '9'; o++)
-				{
-					putchar(tens);
-					putchar(ones);
-					putchar(' ');
-					putchar(t);
-					putchar(o);
 
-					if (!((tens == '9' && ones == '8') &&
-					      (t == '9' && o == '9')))
-					{
-						putchar(',');
-						putchar(' ');
-					}
-				}
-				o = '0';
-			}
+			putchar(',');
+			putchar(' ');
 		}
-	}
 	putchar('\n');
-
 	return (0);
-}
+
+
