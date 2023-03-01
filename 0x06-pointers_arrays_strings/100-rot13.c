@@ -1,27 +1,24 @@
-#include "main.h"
+#include "notrebloh.h"
+#include "stdio.h"
 
 /**
- * *rot13 - Entry point
- * Description: Encodes a string using rot13
- * @str: Character
- * Return: char
+ * print_diagsums- sum diagonal values
+ * @a: pointer to array of int type
+ * @size: int type
+ * Return: sum of two sides
+ *
  */
 
-char *rot13(char *str)
+void print_diagsums(int *a, int size)
 {
-	char *p = str;
+	int x, y, suma, sumb;
 
-	while (*p != '\0')
-	{
-		if ((*p >= 'a' && *p <= 'm') || (*p >= 'A' && *p <= 'M'))
-		{
-			*p += 13;
-		}
-		else if ((*p >= 'n' && *p <= 'z') || (*p >= 'N' && *p <= 'Z'))
-		{
-			*p -= 13;
-		}
-		p++;
-	}
-	return (str);
+	suma = 0;
+	sumb = 0;
+
+	for (x = 0;  x < size; x++)
+		suma += a[(size + 1) * x];
+	for (y =  0; y < size; y++)
+		sumb += a[(size - 1) * (y + 1)];
+	printf("%d, %d\n",  suma, sumb);
 }
