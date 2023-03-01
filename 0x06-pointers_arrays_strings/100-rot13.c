@@ -1,24 +1,47 @@
-#include "notrebloh.h"
-#include "stdio.h"
+#include "main.h"
 
 /**
- * print_diagsums- sum diagonal values
- * @a: pointer to array of int type
- * @size: int type
- * Return: sum of two sides
+ * rot13 - Encodes a string using rot13.
+ * @str: The string to be encoded.
  *
+ * Return: A pointer to the encoded string.
  */
-
-void print_diagsums(int *a, int size)
+char *rot13(char *str)
 {
-	int x, y, suma, sumb;
+	int indx1 = 0, indx2;
+	char alphabet[52] = {'A', 'B', 'C', 'D', 'E', 'F',
+			     'G', 'H', 'I', 'J', 'K', 'L',
+			     'M', 'N', 'O', 'P', 'Q', 'R',
+			     'S', 'T', 'U', 'V', 'W', 'X',
+			     'Y', 'Z', 'a', 'b', 'c', 'd',
+			     'e', 'f', 'g', 'h', 'i', 'j',
+			     'k', 'l', 'm', 'n', 'o', 'p',
+			     'q', 'r', 's', 't', 'u', 'v',
+			     'w', 'x', 'y', 'z'};
+	char rot13key[52] = {'N', 'O', 'P', 'Q', 'R', 'S',
+			     'T', 'U', 'V', 'W', 'X', 'Y',
+			     'Z', 'A', 'B', 'C', 'D', 'E',
+			     'F', 'G', 'H', 'I', 'J', 'K',
+			     'L', 'M', 'n', 'o', 'p', 'q',
+			     'r', 's', 't', 'u', 'v', 'w',
+			     'x', 'y', 'z', 'a', 'b', 'c',
+			     'd', 'e', 'f', 'g', 'h', 'i',
+			     'j', 'k', 'l', 'm'};
 
-	suma = 0;
-	sumb = 0;
+	while (str[indx1])
+	{
+		for (indx2 = 0; indx2 < 52; indx2++)
+		{
+			if (str[indx1] == alphabet[indx2])
+			{
+				str[indx1] = rot13key[indx2];
+				break;
+			}
+		}
 
-	for (x = 0;  x < size; x++)
-		suma += a[(size + 1) * x];
-	for (y =  0; y < size; y++)
-		sumb += a[(size - 1) * (y + 1)];
-	printf("%d, %d\n",  suma, sumb);
+		indx1++;
+	}
+
+	return (str);
 }
+
