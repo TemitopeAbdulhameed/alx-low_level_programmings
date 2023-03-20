@@ -1,6 +1,7 @@
-#ifndef _OBJECT_LIKE_MACRO_
-#define _OBJECT_LIKE_MACRO_
+#ifndef ABSO
+#define ABSO
 
-#define SIZE 1024
+#define ABS(X) (((X) < (0)) ? (-(X)) : (X))
 
-#endif
+#endif /* ABS(X) */
+
