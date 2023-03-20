@@ -1,7 +1,4 @@
-#ifndef ABSO
-#define ABSO
-
-#define ABS(X) (((X) < (0)) ? (-(X)) : (X))
-
-#endif /* ABS(X) */
-
+#ifndef _HEADER_
+#define _HEADER_
+#define SIZE 1024
+#endif
