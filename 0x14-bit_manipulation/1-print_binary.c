@@ -1,47 +1,34 @@
 #include "main.h"
+#include <stdio.h>
 /**
- * _power - calculate base and power
- * @base: base of  exponet
- * @pow: power of  exponet
- * Return: value  base and power
- */
-unsigned long int _power(unsigned int base, unsigned int pow)
-{
-	unsigned long int num;
-	unsigned int i;
-
-	num = 1;
-	for (i = 1; i <= pow; i++)
-		num *= base;
-	return (num);
-}
-/**
- * print_binary - print  binary representation of  number
- * @n: num of printed
- * Return: void
+ * print_binary - converts unsigned into to binary
+ * @n: unsigned int
+ * Return: binary
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int dev, result;
-	char flag;
 
-	flag = 0;
-	dev = _power(2, sizeof(unsigned long int) * 8 - 1);
+	unsigned long int n_copy = n, mask = 1;
+	int len = 0;
 
-	while (dev != 0)
+	while (n_copy > 0)
 	{
-		result = n & dev;
-		if (result == dev)
-		{
-			flag = 1;
-			_putchar('1');
+		len++;
+		n_copy >>= 1;
+	}
+	len -= 1;
 
-		}
-		else if (flag == 1 || dev == 1)
-		{
+	if (len > 0) /* create mask based in length  num */
+		mask = mask << len;
+
+	while (mask > 0) /* march each rightmost bit to see if 1 or 0 */
+	{
+		if (n & mask)
+			_putchar('1');
+		else
 			_putchar('0');
-		}
-		dev >>= 1;
+
+		mask >>= 1;
 	}
 }
 
